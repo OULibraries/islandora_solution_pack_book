@@ -52,6 +52,7 @@ function islandora_book_preprocess_islandora_book_page(array &$variables) {
   }
   
   // *** the following code is for generating the download links *** //
+  $module_path = drupal_get_path('module', 'islandora_internet_archive_bookreader');
   $download_settings = array(
     'medium_size' => url("islandora/object/{$object->id}/datastream/JPG/download"),
     'thumbnail' => url("islandora/object/{$object->id}/datastream/TN/download"),
