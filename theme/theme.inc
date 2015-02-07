@@ -51,14 +51,16 @@ function islandora_book_preprocess_islandora_book_page(array &$variables) {
     $variables['viewer'] = $viewer;
   }
   
-  // *** the following code is for generating the download links *** //
+  // *** the following code is for generating the download links *** //  
   $module_path = drupal_get_path('module', 'islandora_internet_archive_bookreader');
+
   $download_settings = array(
-    'medium_size' => url("islandora/object/{$object->id}/datastream/JPG/download"),
-    'thumbnail' => url("islandora/object/{$object->id}/datastream/TN/download"),
-    'tiff_size' => url("islandora/object/{$object->id}/datastream/OBJ/download")
+    'div' => "#book-page-viewer",
+    'book_solution_page_viewer' => true,
+    'page_object_id' => $object->id,
+    'page_num' =>$object->label
   );
-    
+
   drupal_add_js(array('islandora_internet_archive_bookreader' => $download_settings), 'setting');
   
   drupal_add_js("$module_path/js/book_page_download.js", array(
